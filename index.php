@@ -10,26 +10,11 @@ require_once 'PedestrianWay.php';
 // Instance of a Car object, parking brake is on by default
 $testCar = new Car('yellow', 4, 'fuel');
 
+echo '<h3>Starting</h3><hr>';
 // Starting car object
-try {
-    echo $testCar->start() . '</br>';
-}
-catch (Exception $e) {
-    // If park brake is on when starting : park brakes -> off, return exeption message
-    $testCar->setParkBrake('off');
-    echo $e->getMessage() . '</br>';
-} finally {
-    echo 'My car is rolling like a donut' . '</br>';
-}
+echo $testCar->start();
 
-// Starting again
-try {
-    echo $testCar->start() . '</br>';
-}
-catch (Exception $e) {
-    // If park brake is on when starting : park brakes -> off, return exeption message
-    $testCar->setParkBrake('off');
-    echo $e->getMessage() . '</br>';
-} finally {
-    echo 'My car is rolling like a donut' . '</br>';
-}
+echo '<br><h3>Restarting</h3><hr>';
+// Setting parking brakes of and re-starting
+$testCar->setParkBrake('off');
+echo $testCar->start();

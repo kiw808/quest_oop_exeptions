@@ -99,9 +99,17 @@ class Car extends Vehicle
 
     public function start() : string
     {
-        if ($this->hasParkBrake == true) {
-            throw new Exception("Don't forget the parking brake next time !");
+        try {
+            echo $this->getParkBrake() . '<br>';
+            if ($this->hasParkBrake == true) {
+                throw new Exception("ERROR : You're trying to start the car with the parking brakes on !");
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage() .'<br>';
+        } finally {
+            echo 'My car is rolling like a donut. <br>';
         }
+
         return 'Engine started.';
     }
 }
